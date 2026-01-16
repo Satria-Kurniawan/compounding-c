@@ -10,7 +10,13 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { Calculator, TrendingUp, Wallet, PieChart } from "lucide-react";
+import {
+  Calculator,
+  TrendingUp,
+  Wallet,
+  PieChart,
+  Github, // Tambahan icon Github
+} from "lucide-react";
 
 // --- SHADCN IMPORTS ---
 import {
@@ -189,15 +195,17 @@ export default function CompoundingCalculator() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-neutral-950 p-4 md:p-8 font-sans text-slate-900 dark:text-slate-200">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-neutral-950 p-4 md:p-8 font-sans text-slate-900 dark:text-slate-200 flex flex-col">
+      <div className="max-w-6xl mx-auto w-full grow">
         {/* Header */}
         <div className="mb-10 text-center md:text-left">
           <h1 className="text-3xl font-bold flex items-center justify-center md:justify-start gap-3 text-slate-900 dark:text-white">
             <div className="p-2 bg-violet-100 dark:bg-violet-900/30 rounded-xl border border-violet-200 dark:border-violet-500/20">
               <Calculator className="w-8 h-8 text-violet-600 dark:text-violet-400" />
             </div>
-            <span className="text-violet-600">Kalkulator Bunga Majemuk</span>
+            <span className="text-violet-600 dark:text-violet-400">
+              Kalkulator Bunga Majemuk
+            </span>
           </h1>
           <p className="text-slate-500 dark:text-neutral-400 mt-2 text-lg">
             Simulasikan pertumbuhan aset Anda dengan desain adaptif.
@@ -399,12 +407,14 @@ export default function CompoundingCalculator() {
                       Total Pokok
                     </span>
                   </div>
-                  <p className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white truncate">
-                    {formatCurrency(summary.totalInvested)}
-                  </p>
-                  <p className="text-xs text-slate-500 dark:text-neutral-500 mt-1 font-medium">
-                    ≈ {formatCompactNumber(summary.totalInvested)}
-                  </p>
+                  <div>
+                    <p className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white truncate">
+                      {formatCurrency(summary.totalInvested)}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-neutral-500 mt-1 font-medium">
+                      ≈ {formatCompactNumber(summary.totalInvested)}
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -419,12 +429,14 @@ export default function CompoundingCalculator() {
                       Total Bunga
                     </span>
                   </div>
-                  <p className="text-xl md:text-2xl font-bold text-emerald-600 dark:text-emerald-400 truncate">
-                    +{formatCurrency(summary.totalInterest)}
-                  </p>
-                  <p className="text-xs text-emerald-600/70 dark:text-emerald-400/70 mt-1 font-medium">
-                    ≈ {formatCompactNumber(summary.totalInterest)}
-                  </p>
+                  <div>
+                    <p className="text-xl md:text-2xl font-bold text-emerald-600 dark:text-emerald-400 truncate">
+                      +{formatCurrency(summary.totalInterest)}
+                    </p>
+                    <p className="text-xs text-emerald-600/70 dark:text-emerald-400/70 mt-1 font-medium">
+                      ≈ {formatCompactNumber(summary.totalInterest)}
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -439,12 +451,14 @@ export default function CompoundingCalculator() {
                       Nilai Akhir
                     </span>
                   </div>
-                  <p className="text-2xl md:text-3xl font-bold truncate">
-                    {formatCurrency(summary.totalValue)}
-                  </p>
-                  <p className="text-xs text-violet-200/80 mt-1 font-medium">
-                    ≈ {formatCompactNumber(summary.totalValue)}
-                  </p>
+                  <div>
+                    <p className="text-2xl md:text-3xl font-bold truncate">
+                      {formatCurrency(summary.totalValue)}
+                    </p>
+                    <p className="text-xs text-violet-200/80 mt-1 font-medium">
+                      ≈ {formatCompactNumber(summary.totalValue)}
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -572,6 +586,28 @@ export default function CompoundingCalculator() {
             </Card>
           </div>
         </div>
+
+        {/* --- FOOTER: DEVELOPED BY --- */}
+        <div className="mt-16 mb-8 flex justify-center">
+          <a
+            href="https://github.com/Satria-Kurniawan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 px-5 py-2.5 rounded-full bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 shadow-sm hover:shadow-md hover:border-violet-500/50 dark:hover:border-violet-500/50 transition-all duration-300"
+          >
+            <span className="text-xs font-medium text-slate-500 dark:text-neutral-500 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+              Developed by
+            </span>
+            <div className="h-4 w-px bg-slate-200 dark:bg-neutral-800" />
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold text-slate-700 dark:text-neutral-300 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                Satria Kurniawan
+              </span>
+              <Github className="w-4 h-4 text-slate-400 dark:text-neutral-500 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors" />
+            </div>
+          </a>
+        </div>
+        {/* --- END FOOTER --- */}
       </div>
     </div>
   );
